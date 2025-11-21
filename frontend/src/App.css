@@ -65,3 +65,53 @@ button {
     transform: rotate(360deg);
   }
 }
+
+.products-page {
+  padding: 20px;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-management {
+  padding: 20px;
+}
+
+.product-management form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 400px;
+}
+
+.product-management table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-management th, .product-management td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.product-management th {
+  background-color: #f2f2f2;
+}

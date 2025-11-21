@@ -70,6 +70,9 @@ npm start
 * clear screen in psql
  Ctrl + L
 
+* insert data in products table
+ INSERT INTO products (name, description, image, price) VALUES ('Product 1', 'Description 1', 'image1.jpg', 100);
+ INSERT INTO products (name, description, image, price) VALUES ('Product 2', 'Description 2', 'image2.jpg', 200);
 
 * drop db
  DROP DATABASE <db_name>;
