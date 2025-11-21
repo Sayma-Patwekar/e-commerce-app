@@ -3,18 +3,16 @@ package models
 import "time"
 
 type Admin struct {
-	ID           int       `json:"id"`
-	Username     string    `json:"username"`
-	PasswordHash string    `json:"password,omitempty"`
-	CreatedAt    time.Time `json:"created_at"`
+	ID       int    `json:"id"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type User struct {
-	ID           int       `json:"id"`
-	Username     string    `json:"username"`
-	PasswordHash string    `json:"password,omitempty"`
-	Email        string    `json:"email"`
-	CreatedAt    time.Time `json:"created_at"`
+	ID       int    `json:"id"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
 }
 
 type Product struct {

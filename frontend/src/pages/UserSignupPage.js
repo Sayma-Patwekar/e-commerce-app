@@ -9,7 +9,7 @@ function UserSignupPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/user/signup', {
+    const response = await fetch('http://localhost:8080/api/user/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password, email }),

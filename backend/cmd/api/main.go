@@ -8,6 +8,7 @@ import (
 	"shopping-app/internal/database"
 	"shopping-app/internal/handlers"
 
+	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
@@ -53,6 +54,13 @@ func main() {
 	api.HandleFunc("/user/login", handlers.UserLogin).Methods("POST")
 	api.HandleFunc("/products", handlers.GetAllProducts).Methods("GET")
 
+	// CORS middleware
+	corsHandler := gohandlers.CORS(
+		gohandlers.AllowedOrigins([]string{"http://localhost:3000"}),
+		gohandlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
+		gohandlers.AllowedHeaders([]string{"Content-Type", "Authorization"}),
+	)
+
 	log.Println("Starting server on :8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":8080", corsHandler(r)))
 }
