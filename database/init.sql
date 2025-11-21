@@ -1,14 +1,29 @@
-CREATE DATABASE shopsmart;
+CREATE DATABASE IF NOT EXISTS shopping_db;
 
-CREATE TABLE IF NOT EXISTS products (
+-- Create the admins table
+CREATE TABLE admins (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    description TEXT,
-    price NUMERIC(10,2),
-    image_url TEXT
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO products(name, description, price, image_url) VALUES
-('iPhone 14', 'Apple smartphone', 799, 'https://example.com/iphone.jpg'),
-('Samsung TV', '4K UHD Smart TV', 999, 'https://example.com/tv.jpg'),
-('Nike Shoes', 'Running Shoes', 120, 'https://example.com/shoes.jpg');
+-- Create the users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create the products table
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    image VARCHAR(255), -- Path to the image file
+    price NUMERIC(10, 2) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
