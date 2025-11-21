@@ -21,13 +21,17 @@ function ProductsPage() {
     <div className="products-page">
       <h2>Our Products</h2>
       <div className="product-list">
-        {products.map((product) => (
-          <div key={product.id} className="product-card">
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-          </div>
-        ))}
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div key={product.id} className="product-card">
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <p>${product.price}</p>
+            </div>
+          ))
+        ) : (
+          <p>No products available.</p>
+        )}
       </div>
     </div>
   );

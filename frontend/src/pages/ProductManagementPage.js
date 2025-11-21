@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function ProductManagementPage() {
   const [products, setProducts] = useState([]);
-  const [form, setForm] = useState({ name: '', description: '', image: '' });
+  const [form, setForm] = useState({ name: '', description: '', price: '' });
   const [editing, setEditing] = useState(null);
 
   useEffect(() => {
@@ -28,11 +28,11 @@ function ProductManagementPage() {
     const response = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, price: parseFloat(form.price) }),
     });
 
     if (response.ok) {
-      setForm({ name: '', description: '', image: '' });
+      setForm({ name: '', description: '', price: '' });
       setEditing(null);
       fetchProducts();
     }
@@ -60,7 +60,7 @@ function ProductManagementPage() {
       <form onSubmit={handleSubmit}>
         <input name="name" value={form.name} onChange={handleChange} placeholder="Name" required />
         <input name="description" value={form.description} onChange={handleChange} placeholder="Description" required />
-        <input name="image" value={form.image} onChange={handleChange} placeholder="Image URL" required />
+        <input name="price" value={form.price} onChange={handleChange} placeholder="Price" type="number" step="0.01" required />
         <button type="submit">{editing ? 'Update' : 'Create'}</button>
       </form>
       <table>
@@ -68,6 +68,7 @@ function ProductManagementPage() {
           <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Price</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -76,6 +77,7 @@ function ProductManagementPage() {
             <tr key={product.id}>
               <td>{product.name}</td>
               <td>{product.description}</td>
+              <td>${product.price}</td>
               <td>
                 <button onClick={() => handleEdit(product)}>Edit</button>
                 <button onClick={() => handleDelete(product.id)}>Delete</button>
