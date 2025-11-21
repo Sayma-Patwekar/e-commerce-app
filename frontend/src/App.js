@@ -8,6 +8,8 @@ import AdminHomePage from './pages/AdminHomePage';
 import ProductsPage from './pages/ProductsPage';
 import ProductManagementPage from './pages/ProductManagementPage';
 import UserManagementPage from './pages/UserManagementPage';
+import UserSignupPage from './pages/UserSignupPage';
+import AdminSignupPage from './pages/AdminSignupPage';
 import './App.css';
 
 function App() {
@@ -20,7 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/user-login" element={<UserLoginPage />} />
+          <Route path="/user-signup" element={<UserSignupPage />} />
           <Route path="/admin-login" element={<AdminLoginPage />} />
+          <Route path="/admin-signup" element={<AdminSignupPage />} />
           <Route path="/user-home" element={<UserHomePage />} />
           <Route path="/admin-home" element={<AdminHomePage />} />
           <Route path="/products" element={<ProductsPage />} />

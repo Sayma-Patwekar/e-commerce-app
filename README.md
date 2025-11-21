@@ -1,8 +1,11 @@
+# note:after installing dependencies always run 'go mod tidy'
+
 * go mod init shopping-app
 cd backend
 * go get -u github.com/gorilla/mux
 * go get -u github.com/lib/pq
 * go get github.com/joho/godotenv
+* go get golang.org/x/crypto/bcrypt
 
 cd frontend
 * npx create-react-app .
@@ -67,3 +70,13 @@ npm start
 
 * drop
  DROP DATABASE <db_name>;
+
+
+# users data
+username: sayma
+email: sayma@gmail.com
+password: Pass@123
+
+# admin data
+username: admin1
+password: admin@123

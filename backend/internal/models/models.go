@@ -5,14 +5,14 @@ import "time"
 type Admin struct {
 	ID           int       `json:"id"`
 	Username     string    `json:"username"`
-	PasswordHash string    `json:"-"`
+	PasswordHash string    `json:"password,omitempty"`
 	CreatedAt    time.Time `json:"created_at"`
 }
 
 type User struct {
 	ID           int       `json:"id"`
 	Username     string    `json:"username"`
-	PasswordHash string    `json:"-"`
+	PasswordHash string    `json:"password,omitempty"`
 	Email        string    `json:"email"`
 	CreatedAt    time.Time `json:"created_at"`
 }
